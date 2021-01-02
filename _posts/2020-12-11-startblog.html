@@ -1,0 +1,33 @@
+---
+layout: post
+title: "如何使用GitHub Pages来部署个人博客"
+subtitle: "只需简单几步，个人博客轻松启动！"
+date: 2020-12-11 13:22:44 -0400
+background: '/img/posts/02.jpg'
+categories: post
+---
+<h2 class="section-heading">官方教程</h2>
+<div class="">
+    <a class="btn btn-info" href="https://pages.github.com">Go Go Go</a>
+</div>
+
+<h2 class="section-heading">Steps</h2>
+<p>一：进入GitHub,新建一个名字为“username.github.io”的repository,其中，username是你的GitHub用户名。
+</p>
+<p>二：打开终端，输入命令，记得将两处username替换为你的GitHub用户名<br>
+    <code>git clone https://github.com/username/username.github.io</code>
+</p>
+<p>三：在终端进入到项目文件夹中，替换username为你的GitHub用户名<br>
+    <code>cd username.github.io</code>
+</p>
+<p>四：在终端输入以下代码，创建测试文件<br>
+    <code>echo "Hello World" > index.html</code>
+</p>
+<p>五：将文件夹中到内容add,commit并push到GitHub<br>
+    <code>git add --all
+        <br>git commit -m "Initial commit"
+        <br>git push -u origin master</code>
+</p>
+<p>六：打开浏览器输入如下网址（记得替换username）,个人博客就大功告成了！<br>
+    <code>https://username.github.io.</code>
+</p>

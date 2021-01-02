@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    利用Docker构建Jekyll静态博客 - Fish Blog
+    
+  </title>
+
+  <meta name="description" content="前言 和hexo一样，jekyll是一个简洁的静态博客生成器。但和hexo不一样的是，jekyll环境的部署比较麻烦，坑也比较多。使用Docker来配置可以省去不少的麻烦。 如果懒得折腾，建议直接用hexo搭建博客，具体方法可以参考B站程序羊的视频，在此不赘述。">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://0.0.0.0:4000/post/2020/12/31/jeykll.html">
+  <link rel="alternate" type="application/rss+xml" title="Fish Blog" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Fish Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/demos">Demos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/posts/06.jpg')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>利用Docker构建Jekyll静态博客</h1>
+            
+            <h2 class="subheading">一句命令搭好你的个人网站!</h2>
+            
+            <span class="meta">Posted by
+              <a href="#">JYL</a>
+              on December 31, 2020 &middot; <span class="reading-time" title="Estimated read time">
+  
+   1 min  read </span>
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <h1 id="前言">前言</h1>
+<p>和hexo一样，jekyll是一个简洁的静态博客生成器。但和hexo不一样的是，jekyll环境的部署比较麻烦，坑也比较多。使用Docker来配置可以省去不少的麻烦。
+如果懒得折腾，建议直接用hexo搭建博客，具体方法可以参考B站程序羊的视频，在此不赘述。</p>
+
+<h1 id="用docker构建jekyll工程">用Docker构建Jekyll工程</h1>
+<p>如果你打算将Jekyll工程部署到Git Pages上去，那么可以利用Docker来构建修改好的工程文件。在Docker中为我们提供了Jekyll环境的镜像。</p>
+
+<p>首先，打开命令行，进入到你的Jekyll工程文件中，输入如下命令</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker run --rm -it --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:$PWD/cache/bundle"  jekyll/jekyll:4.2.0 jekyll build</code></p>
+<ul>
+  <li><em>–rm</em>:			如果该容器已存在，那么将自动清除</li>
+  <li><em>–volume=”$PWD:/srv/jekyll”</em>:			将当前目录映射到容器中的/srv/jekyll目录</li>
+  <li><em>–volume=”$PWD/vendor/bundle</em>:			$PWD/cache/bundle”:将当前目录下的/vendor/bundle的文件映射到/cache/bundle中，将gems缓存起来供后续使用</li>
+  <li><em>jekyll/jekyll:4.2.0</em>:			使用4.2.0版本的jekyll</li>
+</ul>
+
+<p>如果命令顺利执行完毕，恭喜，你的Jejyll工程就已经构建好了</p>
+
+<h1 id="用docker运行jekyll工程">用Docker运行Jekyll工程</h1>
+<p>如果你打算在本地启动Jekyll工程，可以执行以下命令</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker run --rm --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:$PWD/cache/bundle" -p 4000:4000 jekyll/jekyll:4.2.0 jekyll serve</code></p>
+
+<p>如果命令行执行没有报错，那么在浏览器打开<code class="language-plaintext highlighter-rouge">http://localhost:4000/</code>就可以看到你的网站了</p>
+
+<h1 id="jekyll个性化设置">Jekyll个性化设置</h1>
+<p>目前网络上有很多Jekyll模版，在模版的基础上，可以做一些修改来个性化自己的博客：</p>
+<ul>
+  <li>
+    <p><em>博文中图片路径设置</em>：如果想把图片直接放在工程文件中而不是在云上，那么可以使用<code class="language-plaintext highlighter-rouge">/img/图片名.png</code>这样的路径格式来访问工程中的图片，其中，img是工程跟文件夹中的img文件夹</p>
+  </li>
+  <li>
+    <p><em>分页设置</em>：很多Jekyll模版中，分页由变量Paginator设置，而Paginator不是数组，只能指定一个路径，如果想要将博客文章分类，可以将index文件中的
+<code class="language-plaintext highlighter-rouge">for post in paginator.posts</code>
+语句替换为
+<code class="language-plaintext highlighter-rouge">for post in site.categories.你定义的类别名</code>
+并在博文头里面加<code class="language-plaintext highlighter-rouge">categories: 你定义的类别名</code>属性即可</p>
+  </li>
+</ul>
+
+
+
+        <hr>
+
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left" href="/demo/2020/12/15/yelpcamp.html" data-toggle="tooltip" data-placement="top" title="YempCamp, go camping with your family!">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:yulin_jia98@163.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/Jikaqiu">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; JYL 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-XXXXXXXXX-X');
+</script>
+
+
+
+</body>
+
+</html>

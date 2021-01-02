@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2021-01-02T04:34:05-06:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Fish Blog</title><subtitle>Welcome to My Site</subtitle><author><name>JYL</name></author><entry><title type="html">利用Docker构建Jekyll静态博客</title><link href="http://0.0.0.0:4000/post/2020/12/31/jeykll.html" rel="alternate" type="text/html" title="利用Docker构建Jekyll静态博客" /><published>2020-12-31T08:45:13-06:00</published><updated>2020-12-31T08:45:13-06:00</updated><id>http://0.0.0.0:4000/post/2020/12/31/jeykll</id><content type="html" xml:base="http://0.0.0.0:4000/post/2020/12/31/jeykll.html">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+&lt;p&gt;和hexo一样，jekyll是一个简洁的静态博客生成器。但和hexo不一样的是，jekyll环境的部署比较麻烦，坑也比较多。使用Docker来配置可以省去不少的麻烦。
+如果懒得折腾，建议直接用hexo搭建博客，具体方法可以参考B站程序羊的视频，在此不赘述。&lt;/p&gt;
+
+&lt;h1 id=&quot;用docker构建jekyll工程&quot;&gt;用Docker构建Jekyll工程&lt;/h1&gt;
+&lt;p&gt;如果你打算将Jekyll工程部署到Git Pages上去，那么可以利用Docker来构建修改好的工程文件。在Docker中为我们提供了Jekyll环境的镜像。&lt;/p&gt;
+
+&lt;p&gt;首先，打开命令行，进入到你的Jekyll工程文件中，输入如下命令&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker run --rm -it --volume=&quot;$PWD:/srv/jekyll&quot; --volume=&quot;$PWD/vendor/bundle:$PWD/cache/bundle&quot;  jekyll/jekyll:4.2.0 jekyll build&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;–rm&lt;/em&gt;:			如果该容器已存在，那么将自动清除&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;–volume=”$PWD:/srv/jekyll”&lt;/em&gt;:			将当前目录映射到容器中的/srv/jekyll目录&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;–volume=”$PWD/vendor/bundle&lt;/em&gt;:			$PWD/cache/bundle”:将当前目录下的/vendor/bundle的文件映射到/cache/bundle中，将gems缓存起来供后续使用&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;jekyll/jekyll:4.2.0&lt;/em&gt;:			使用4.2.0版本的jekyll&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果命令顺利执行完毕，恭喜，你的Jejyll工程就已经构建好了&lt;/p&gt;
+
+&lt;h1 id=&quot;用docker运行jekyll工程&quot;&gt;用Docker运行Jekyll工程&lt;/h1&gt;
+&lt;p&gt;如果你打算在本地启动Jekyll工程，可以执行以下命令&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker run --rm --volume=&quot;$PWD:/srv/jekyll&quot; --volume=&quot;$PWD/vendor/bundle:$PWD/cache/bundle&quot; -p 4000:4000 jekyll/jekyll:4.2.0 jekyll serve&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;如果命令行执行没有报错，那么在浏览器打开&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4000/&lt;/code&gt;就可以看到你的网站了&lt;/p&gt;
+
+&lt;h1 id=&quot;jekyll个性化设置&quot;&gt;Jekyll个性化设置&lt;/h1&gt;
+&lt;p&gt;目前网络上有很多Jekyll模版，在模版的基础上，可以做一些修改来个性化自己的博客：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;博文中图片路径设置&lt;/em&gt;：如果想把图片直接放在工程文件中而不是在云上，那么可以使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/img/图片名.png&lt;/code&gt;这样的路径格式来访问工程中的图片，其中，img是工程跟文件夹中的img文件夹&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;分页设置&lt;/em&gt;：很多Jekyll模版中，分页由变量Paginator设置，而Paginator不是数组，只能指定一个路径，如果想要将博客文章分类，可以将index文件中的
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for post in paginator.posts&lt;/code&gt;
+语句替换为
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for post in site.categories.你定义的类别名&lt;/code&gt;
+并在博文头里面加&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;categories: 你定义的类别名&lt;/code&gt;属性即可&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>JYL</name></author><category term="post" /><summary type="html">前言 和hexo一样，jekyll是一个简洁的静态博客生成器。但和hexo不一样的是，jekyll环境的部署比较麻烦，坑也比较多。使用Docker来配置可以省去不少的麻烦。 如果懒得折腾，建议直接用hexo搭建博客，具体方法可以参考B站程序羊的视频，在此不赘述。</summary></entry><entry><title type="html">YempCamp, go camping with your family!</title><link href="http://0.0.0.0:4000/demo/2020/12/15/yelpcamp.html" rel="alternate" type="text/html" title="YempCamp, go camping with your family!" /><published>2020-12-15T08:45:13-06:00</published><updated>2020-12-15T08:45:13-06:00</updated><id>http://0.0.0.0:4000/demo/2020/12/15/yelpcamp</id><content type="html" xml:base="http://0.0.0.0:4000/demo/2020/12/15/yelpcamp.html">&lt;h2 class=&quot;section-heading&quot;&gt;Introduction&lt;/h2&gt;
+
+    &lt;p&gt;
+        YelpCamp is a demo website that focus on camping sites. Users can use it to share good camping
+        sites and leave comments. Location, price, pictures of campgrounds can be uploaded and
+        displayed.
+    &lt;/p&gt;
+
+    &lt;h2 class=&quot;section-heading&quot;&gt;Building Tools&lt;/h2&gt;
+    &lt;p&gt;Express+Bootstrap+Mongodb+Cloudinary+Heroku&lt;/p&gt;
+    &lt;h2 class=&quot;section-heading&quot;&gt;Preview&lt;/h2&gt;
+
+    &lt;img src=&quot;/img/posts/yelpcamp/yelpcamp.png&quot; alt=&quot;&quot; class=&quot;img-thumbnail&quot;&gt;
+    &lt;p&gt;Note: Use chrome to get best experience&lt;/p&gt;
+    &lt;div class=&quot;text-center&quot;&gt;
+        &lt;a class=&quot;btn btn-info&quot; href=&quot;https://calm-beyond-17923.herokuapp.com/&quot;&gt;Go To YelpCamp&lt;/a&gt;
+    &lt;/div&gt;</content><author><name>JYL</name></author><category term="demo" /><summary type="html">Introduction</summary></entry><entry><title type="html">Project Manage System, your wingman to get the manage work done!</title><link href="http://0.0.0.0:4000/demo/2020/12/14/pma.html" rel="alternate" type="text/html" title="Project Manage System, your wingman to get the manage work done!" /><published>2020-12-14T16:45:13-06:00</published><updated>2020-12-14T16:45:13-06:00</updated><id>http://0.0.0.0:4000/demo/2020/12/14/pma</id><content type="html" xml:base="http://0.0.0.0:4000/demo/2020/12/14/pma.html">&lt;h2 class=&quot;section-heading&quot;&gt;Introduction&lt;/h2&gt;
+
+    &lt;p&gt;
+        Project Manage System is a demo that manage to maintain the many to many relationships between
+        projects
+        and
+        employees, Set project timelines, Count projects nums at each stage and so on.
+
+    &lt;/p&gt;
+
+    &lt;h2 class=&quot;section-heading&quot;&gt;Building Tools&lt;/h2&gt;
+    &lt;p&gt;Springboot+Bootstrap+Postgresql+Aws&lt;/p&gt;
+    &lt;h2 class=&quot;section-heading&quot;&gt;Preview&lt;/h2&gt;
+
+    &lt;img src=/img/posts/pma/pma.png alt=&quot;&quot; class=&quot;img-thumbnail&quot;&gt;
+    &lt;p&gt;Note:Use this account to test CRUD functions&lt;br&gt;Username:admin Password:admin&lt;/p&gt;
+    &lt;div class=&quot;text-center&quot;&gt;
+        &lt;a class=&quot;btn btn-info&quot;
+            href=&quot;http://ec2-18-183-33-126.ap-northeast-1.compute.amazonaws.com:8080&quot;&gt;Go To Project
+            Manage
+            System&lt;/a&gt;
+    &lt;/div&gt;</content><author><name>JYL</name></author><category term="demo" /><summary type="html">Introduction</summary></entry><entry><title type="html">如何使用GitHub Pages来部署个人博客</title><link href="http://0.0.0.0:4000/post/2020/12/11/startblog.html" rel="alternate" type="text/html" title="如何使用GitHub Pages来部署个人博客" /><published>2020-12-11T11:22:44-06:00</published><updated>2020-12-11T11:22:44-06:00</updated><id>http://0.0.0.0:4000/post/2020/12/11/startblog</id><content type="html" xml:base="http://0.0.0.0:4000/post/2020/12/11/startblog.html">&lt;h2 class=&quot;section-heading&quot;&gt;官方教程&lt;/h2&gt;
+&lt;div class=&quot;&quot;&gt;
+    &lt;a class=&quot;btn btn-info&quot; href=&quot;https://pages.github.com&quot;&gt;Go Go Go&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;h2 class=&quot;section-heading&quot;&gt;Steps&lt;/h2&gt;
+&lt;p&gt;一：进入GitHub,新建一个名字为“username.github.io”的repository,其中，username是你的GitHub用户名。
+&lt;/p&gt;
+&lt;p&gt;二：打开终端，输入命令，记得将两处username替换为你的GitHub用户名&lt;br&gt;
+    &lt;code&gt;git clone https://github.com/username/username.github.io&lt;/code&gt;
+&lt;/p&gt;
+&lt;p&gt;三：在终端进入到项目文件夹中，替换username为你的GitHub用户名&lt;br&gt;
+    &lt;code&gt;cd username.github.io&lt;/code&gt;
+&lt;/p&gt;
+&lt;p&gt;四：在终端输入以下代码，创建测试文件&lt;br&gt;
+    &lt;code&gt;echo &quot;Hello World&quot; &gt; index.html&lt;/code&gt;
+&lt;/p&gt;
+&lt;p&gt;五：将文件夹中到内容add,commit并push到GitHub&lt;br&gt;
+    &lt;code&gt;git add --all
+        &lt;br&gt;git commit -m &quot;Initial commit&quot;
+        &lt;br&gt;git push -u origin master&lt;/code&gt;
+&lt;/p&gt;
+&lt;p&gt;六：打开浏览器输入如下网址（记得替换username）,个人博客就大功告成了！&lt;br&gt;
+    &lt;code&gt;https://username.github.io.&lt;/code&gt;
+&lt;/p&gt;</content><author><name>JYL</name></author><category term="post" /><summary type="html">官方教程 Go Go Go</summary></entry></feed>
