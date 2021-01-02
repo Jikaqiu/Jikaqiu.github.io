@@ -2,8 +2,8 @@ title:              Fish Blog
 email:              yulin_jia98@163.com
 description:        Welcome to My Site
 author:             JYL
-baseurl:            "https://jikaqiu.github.io/"
-url:                ""
+baseurl:            ""
+url:                "https://jikaqiu.github.io"
 
 # Social Profiles
 twitter_username:   

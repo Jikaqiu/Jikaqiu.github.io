@@ -1,4 +1,4 @@
-I"<h1 id="前言">前言</h1>
+I"�<h1 id="前言">前言</h1>
 <p>和hexo一样，jekyll是一个简洁的静态博客生成器。但和hexo不一样的是，jekyll环境的部署比较麻烦，坑也比较多。使用Docker来配置可以省去不少的麻烦。
 如果懒得折腾，建议直接用hexo搭建博客，具体方法可以参考B站程序羊的视频，在此不赘述。</p>
 
@@ -28,7 +28,7 @@
 <p>目前网络上有很多Jekyll模版，在模版的基础上，可以做一些修改来个性化自己的博客：</p>
 <ul>
   <li>
-    <p><em>博文中图片路径设置</em>：如果想把图片直接放在工程文件中而不是在云上，那么可以使用<code class="language-plaintext highlighter-rouge">https://jikaqiu.github.io//img/图片名.png</code>这样的路径格式来访问工程中的图片，其中，img是工程跟文件夹中的img文件夹</p>
+    <p><em>博文中图片路径设置</em>：如果想把图片直接放在工程文件中而不是在云上，那么可以使用<code class="language-plaintext highlighter-rouge">/img/图片名.png</code>这样的路径格式来访问工程中的图片，其中，img是工程跟文件夹中的img文件夹</p>
   </li>
   <li>
     <p><em>分页设置</em>：很多Jekyll模版中，分页由变量Paginator设置，而Paginator不是数组，只能指定一个路径，如果想要将博客文章分类，可以将index文件中的
