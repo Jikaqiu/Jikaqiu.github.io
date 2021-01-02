@@ -1,0 +1,42 @@
+I"<h1 id="前言">前言</h1>
+<p>和hexo一样，jekyll是一个简洁的静态博客生成器。但和hexo不一样的是，jekyll环境的部署比较麻烦，坑也比较多。使用Docker来配置可以省去不少的麻烦。
+如果懒得折腾，建议直接用hexo搭建博客，具体方法可以参考B站程序羊的视频，在此不赘述。</p>
+
+<h1 id="用docker构建jekyll工程">用Docker构建Jekyll工程</h1>
+<p>如果你打算将Jekyll工程部署到Git Pages上去，那么可以利用Docker来构建修改好的工程文件。在Docker中为我们提供了Jekyll环境的镜像。</p>
+
+<p>首先，打开命令行，进入到你的Jekyll工程文件中，输入如下命令</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker run --rm -it --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:$PWD/cache/bundle"  jekyll/jekyll:4.2.0 jekyll build</code></p>
+<ul>
+  <li><em>–rm</em>:			如果该容器已存在，那么将自动清除</li>
+  <li><em>–volume=”$PWD:/srv/jekyll”</em>:			将当前目录映射到容器中的/srv/jekyll目录</li>
+  <li><em>–volume=”$PWD/vendor/bundle</em>:			$PWD/cache/bundle”:将当前目录下的/vendor/bundle的文件映射到/cache/bundle中，将gems缓存起来供后续使用</li>
+  <li><em>jekyll/jekyll:4.2.0</em>:			使用4.2.0版本的jekyll</li>
+</ul>
+
+<p>如果命令顺利执行完毕，恭喜，你的Jejyll工程就已经构建好了</p>
+
+<h1 id="用docker运行jekyll工程">用Docker运行Jekyll工程</h1>
+<p>如果你打算在本地启动Jekyll工程，可以执行以下命令</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker run --rm --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:$PWD/cache/bundle" -p 4000:4000 jekyll/jekyll:4.2.0 jekyll serve</code></p>
+
+<p>如果命令行执行没有报错，那么在浏览器打开<code class="language-plaintext highlighter-rouge">http://localhost:4000/</code>就可以看到你的网站了</p>
+
+<h1 id="jekyll个性化设置">Jekyll个性化设置</h1>
+<p>目前网络上有很多Jekyll模版，在模版的基础上，可以做一些修改来个性化自己的博客：</p>
+<ul>
+  <li>
+    <p><em>博文中图片路径设置</em>：如果想把图片直接放在工程文件中而不是在云上，那么可以使用<code class="language-plaintext highlighter-rouge">https://jikaqiu.github.io//img/图片名.png</code>这样的路径格式来访问工程中的图片，其中，img是工程跟文件夹中的img文件夹</p>
+  </li>
+  <li>
+    <p><em>分页设置</em>：很多Jekyll模版中，分页由变量Paginator设置，而Paginator不是数组，只能指定一个路径，如果想要将博客文章分类，可以将index文件中的
+<code class="language-plaintext highlighter-rouge">for post in paginator.posts</code>
+语句替换为
+<code class="language-plaintext highlighter-rouge">for post in site.categories.你定义的类别名</code>
+并在博文头里面加<code class="language-plaintext highlighter-rouge">categories: 你定义的类别名</code>属性即可</p>
+  </li>
+</ul>
+
+:ET

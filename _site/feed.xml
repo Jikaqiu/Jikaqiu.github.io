@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2021-01-02T04:34:05-06:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Fish Blog</title><subtitle>Welcome to My Site</subtitle><author><name>JYL</name></author><entry><title type="html">利用Docker构建Jekyll静态博客</title><link href="http://0.0.0.0:4000/post/2020/12/31/jeykll.html" rel="alternate" type="text/html" title="利用Docker构建Jekyll静态博客" /><published>2020-12-31T08:45:13-06:00</published><updated>2020-12-31T08:45:13-06:00</updated><id>http://0.0.0.0:4000/post/2020/12/31/jeykll</id><content type="html" xml:base="http://0.0.0.0:4000/post/2020/12/31/jeykll.html">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/https://jikaqiu.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="/https://jikaqiu.github.io/" rel="alternate" type="text/html" /><updated>2021-01-02T04:49:34-06:00</updated><id>/https://jikaqiu.github.io/feed.xml</id><title type="html">Fish Blog</title><subtitle>Welcome to My Site</subtitle><author><name>JYL</name></author><entry><title type="html">利用Docker构建Jekyll静态博客</title><link href="/https://jikaqiu.github.io/post/2020/12/31/jeykll.html" rel="alternate" type="text/html" title="利用Docker构建Jekyll静态博客" /><published>2020-12-31T08:45:13-06:00</published><updated>2020-12-31T08:45:13-06:00</updated><id>/https://jikaqiu.github.io/post/2020/12/31/jeykll</id><content type="html" xml:base="/https://jikaqiu.github.io/post/2020/12/31/jeykll.html">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
 &lt;p&gt;和hexo一样，jekyll是一个简洁的静态博客生成器。但和hexo不一样的是，jekyll环境的部署比较麻烦，坑也比较多。使用Docker来配置可以省去不少的麻烦。
 如果懒得折腾，建议直接用hexo搭建博客，具体方法可以参考B站程序羊的视频，在此不赘述。&lt;/p&gt;
 
@@ -28,7 +28,7 @@
 &lt;p&gt;目前网络上有很多Jekyll模版，在模版的基础上，可以做一些修改来个性化自己的博客：&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;em&gt;博文中图片路径设置&lt;/em&gt;：如果想把图片直接放在工程文件中而不是在云上，那么可以使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/img/图片名.png&lt;/code&gt;这样的路径格式来访问工程中的图片，其中，img是工程跟文件夹中的img文件夹&lt;/p&gt;
+    &lt;p&gt;&lt;em&gt;博文中图片路径设置&lt;/em&gt;：如果想把图片直接放在工程文件中而不是在云上，那么可以使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://jikaqiu.github.io//img/图片名.png&lt;/code&gt;这样的路径格式来访问工程中的图片，其中，img是工程跟文件夹中的img文件夹&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;em&gt;分页设置&lt;/em&gt;：很多Jekyll模版中，分页由变量Paginator设置，而Paginator不是数组，只能指定一个路径，如果想要将博客文章分类，可以将index文件中的
@@ -37,7 +37,7 @@
 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for post in site.categories.你定义的类别名&lt;/code&gt;
 并在博文头里面加&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;categories: 你定义的类别名&lt;/code&gt;属性即可&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>JYL</name></author><category term="post" /><summary type="html">前言 和hexo一样，jekyll是一个简洁的静态博客生成器。但和hexo不一样的是，jekyll环境的部署比较麻烦，坑也比较多。使用Docker来配置可以省去不少的麻烦。 如果懒得折腾，建议直接用hexo搭建博客，具体方法可以参考B站程序羊的视频，在此不赘述。</summary></entry><entry><title type="html">YempCamp, go camping with your family!</title><link href="http://0.0.0.0:4000/demo/2020/12/15/yelpcamp.html" rel="alternate" type="text/html" title="YempCamp, go camping with your family!" /><published>2020-12-15T08:45:13-06:00</published><updated>2020-12-15T08:45:13-06:00</updated><id>http://0.0.0.0:4000/demo/2020/12/15/yelpcamp</id><content type="html" xml:base="http://0.0.0.0:4000/demo/2020/12/15/yelpcamp.html">&lt;h2 class=&quot;section-heading&quot;&gt;Introduction&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>JYL</name></author><category term="post" /><summary type="html">前言 和hexo一样，jekyll是一个简洁的静态博客生成器。但和hexo不一样的是，jekyll环境的部署比较麻烦，坑也比较多。使用Docker来配置可以省去不少的麻烦。 如果懒得折腾，建议直接用hexo搭建博客，具体方法可以参考B站程序羊的视频，在此不赘述。</summary></entry><entry><title type="html">YempCamp, go camping with your family!</title><link href="/https://jikaqiu.github.io/demo/2020/12/15/yelpcamp.html" rel="alternate" type="text/html" title="YempCamp, go camping with your family!" /><published>2020-12-15T08:45:13-06:00</published><updated>2020-12-15T08:45:13-06:00</updated><id>/https://jikaqiu.github.io/demo/2020/12/15/yelpcamp</id><content type="html" xml:base="/https://jikaqiu.github.io/demo/2020/12/15/yelpcamp.html">&lt;h2 class=&quot;section-heading&quot;&gt;Introduction&lt;/h2&gt;
 
     &lt;p&gt;
         YelpCamp is a demo website that focus on camping sites. Users can use it to share good camping
@@ -49,11 +49,11 @@
     &lt;p&gt;Express+Bootstrap+Mongodb+Cloudinary+Heroku&lt;/p&gt;
     &lt;h2 class=&quot;section-heading&quot;&gt;Preview&lt;/h2&gt;
 
-    &lt;img src=&quot;/img/posts/yelpcamp/yelpcamp.png&quot; alt=&quot;&quot; class=&quot;img-thumbnail&quot;&gt;
+    &lt;img src=&quot;https://jikaqiu.github.io//img/posts/yelpcamp/yelpcamp.png&quot; alt=&quot;&quot; class=&quot;img-thumbnail&quot;&gt;
     &lt;p&gt;Note: Use chrome to get best experience&lt;/p&gt;
     &lt;div class=&quot;text-center&quot;&gt;
         &lt;a class=&quot;btn btn-info&quot; href=&quot;https://calm-beyond-17923.herokuapp.com/&quot;&gt;Go To YelpCamp&lt;/a&gt;
-    &lt;/div&gt;</content><author><name>JYL</name></author><category term="demo" /><summary type="html">Introduction</summary></entry><entry><title type="html">Project Manage System, your wingman to get the manage work done!</title><link href="http://0.0.0.0:4000/demo/2020/12/14/pma.html" rel="alternate" type="text/html" title="Project Manage System, your wingman to get the manage work done!" /><published>2020-12-14T16:45:13-06:00</published><updated>2020-12-14T16:45:13-06:00</updated><id>http://0.0.0.0:4000/demo/2020/12/14/pma</id><content type="html" xml:base="http://0.0.0.0:4000/demo/2020/12/14/pma.html">&lt;h2 class=&quot;section-heading&quot;&gt;Introduction&lt;/h2&gt;
+    &lt;/div&gt;</content><author><name>JYL</name></author><category term="demo" /><summary type="html">Introduction</summary></entry><entry><title type="html">Project Manage System, your wingman to get the manage work done!</title><link href="/https://jikaqiu.github.io/demo/2020/12/14/pma.html" rel="alternate" type="text/html" title="Project Manage System, your wingman to get the manage work done!" /><published>2020-12-14T16:45:13-06:00</published><updated>2020-12-14T16:45:13-06:00</updated><id>/https://jikaqiu.github.io/demo/2020/12/14/pma</id><content type="html" xml:base="/https://jikaqiu.github.io/demo/2020/12/14/pma.html">&lt;h2 class=&quot;section-heading&quot;&gt;Introduction&lt;/h2&gt;
 
     &lt;p&gt;
         Project Manage System is a demo that manage to maintain the many to many relationships between
@@ -67,14 +67,14 @@
     &lt;p&gt;Springboot+Bootstrap+Postgresql+Aws&lt;/p&gt;
     &lt;h2 class=&quot;section-heading&quot;&gt;Preview&lt;/h2&gt;
 
-    &lt;img src=/img/posts/pma/pma.png alt=&quot;&quot; class=&quot;img-thumbnail&quot;&gt;
+    &lt;img src=https://jikaqiu.github.io//img/posts/pma/pma.png alt=&quot;&quot; class=&quot;img-thumbnail&quot;&gt;
     &lt;p&gt;Note:Use this account to test CRUD functions&lt;br&gt;Username:admin Password:admin&lt;/p&gt;
     &lt;div class=&quot;text-center&quot;&gt;
         &lt;a class=&quot;btn btn-info&quot;
             href=&quot;http://ec2-18-183-33-126.ap-northeast-1.compute.amazonaws.com:8080&quot;&gt;Go To Project
             Manage
             System&lt;/a&gt;
-    &lt;/div&gt;</content><author><name>JYL</name></author><category term="demo" /><summary type="html">Introduction</summary></entry><entry><title type="html">如何使用GitHub Pages来部署个人博客</title><link href="http://0.0.0.0:4000/post/2020/12/11/startblog.html" rel="alternate" type="text/html" title="如何使用GitHub Pages来部署个人博客" /><published>2020-12-11T11:22:44-06:00</published><updated>2020-12-11T11:22:44-06:00</updated><id>http://0.0.0.0:4000/post/2020/12/11/startblog</id><content type="html" xml:base="http://0.0.0.0:4000/post/2020/12/11/startblog.html">&lt;h2 class=&quot;section-heading&quot;&gt;官方教程&lt;/h2&gt;
+    &lt;/div&gt;</content><author><name>JYL</name></author><category term="demo" /><summary type="html">Introduction</summary></entry><entry><title type="html">如何使用GitHub Pages来部署个人博客</title><link href="/https://jikaqiu.github.io/post/2020/12/11/startblog.html" rel="alternate" type="text/html" title="如何使用GitHub Pages来部署个人博客" /><published>2020-12-11T11:22:44-06:00</published><updated>2020-12-11T11:22:44-06:00</updated><id>/https://jikaqiu.github.io/post/2020/12/11/startblog</id><content type="html" xml:base="/https://jikaqiu.github.io/post/2020/12/11/startblog.html">&lt;h2 class=&quot;section-heading&quot;&gt;官方教程&lt;/h2&gt;
 &lt;div class=&quot;&quot;&gt;
     &lt;a class=&quot;btn btn-info&quot; href=&quot;https://pages.github.com&quot;&gt;Go Go Go&lt;/a&gt;
 &lt;/div&gt;
